@@ -45,6 +45,7 @@ class FindCommand extends commando.Command {
 				}
 			});
 		}
+		message.message.delete();
 	}
 
 	hasPermission(message){	// if user is not in the Student role
