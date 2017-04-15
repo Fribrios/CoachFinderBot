@@ -13,8 +13,25 @@ class HeroesCommand extends commando.Command {
 	}
 
 	async run(message, args){
-		console.log(message);
+		if (message.message.channel.name != 'help-request'){
+			message.reply("This command can only be used in the \"help-request\" channel. Deleting these messages in 5 seconds...");
+			setTimeout(function() {
+				message.message.channel.bulkDelete(2);
+			}, 5000);
+			return;
+		} else {
+			message.member.guild.roles.forEach(function(r){
+				if (r.name.startsWith('~')){
+					args.forEach(function(e){
+						if (('~' + e) == r.name.toLowerCase()){
+							message.member.addRole(r);
+						}
+					});
+				}
+			});
+			message.message.channel.bulkDelete(1);
+		}
 	}
-}
+}	
 
 module.exports = HeroesCommand;
