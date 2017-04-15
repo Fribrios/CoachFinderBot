@@ -34,14 +34,22 @@ class FindCommand extends commando.Command {
 						});
 					}
 				});
-				if ( message.member.roles.exists('name', 'Student') ){
-					message.member.sendMessage(c.user + " can teach you: " + heroList).catch(console.error);
-					c.sendMessage("Hello, " + c.displayName + "! It looks like " + message.member.user +
-						" is currently looking for coaching with: " + heroList + "!\n Why don't you shoot them a message?").catch(console.error);
-				} else {
-					message.member.sendMessage(c.user + " is looking to be taught: " + heroList).catch(console.error);
-					c.sendMessage("Hello, " + c.displayName + "! It looks like " + message.member.user +
-						" is currently looking for students to teach the following heroes: " + heroList + "!\n Why don't you shoot them a message?").catch(console.error);
+				if (heroList.length != 0){
+					if ( message.member.roles.exists('name', 'Student') ){
+						message.member.sendMessage(c.user + " can teach you: " + heroList).catch(console.error);
+						c.sendMessage("Hello, " + c.displayName + "! It looks like " + message.member.user +
+							" is currently looking for coaching with: " + heroList + "!\n Why don't you shoot them a message?").catch(console.error);
+						// console.log(c.user + " can teach you: " + heroList);
+						// console.log("Hello, " + c.displayName + "! It looks like " + message.member.user +
+						// 	" is currently looking for coaching with: " + heroList + "!\n Why don't you shoot them a message?");
+					} else {
+						message.member.sendMessage(c.user + " is looking to be taught: " + heroList).catch(console.error);
+						c.sendMessage("Hello, " + c.displayName + "! It looks like " + message.member.user +
+							" is currently looking for students to teach the following heroes: " + heroList + "!\n Why don't you shoot them a message?").catch(console.error);
+						// console.log(c.user + " is looking to be taught: " + heroList);
+						// console.log("Hello, " + c.displayName + "! It looks like " + message.member.user +
+						// 	" is currently looking for students to teach the following heroes: " + heroList + "!\n Why don't you shoot them a message?");
+					}
 				}
 			});
 		}
