@@ -14,7 +14,7 @@ class HeroesCommand extends commando.Command {
 
 	async run(message, args){
 		if (message.message.channel.name != 'help-request'){
-			message.reply("This command can only be used in the \"help-request\" channel. Deleting these messages in 5 seconds...");
+			message.reply("This command can only be used in the \"help-request\" channel. Deleting these messages in 5 seconds...").catch(console.error);
 			setTimeout(function() {
 				message.message.channel.bulkDelete(2);
 			}, 5000);
@@ -29,7 +29,7 @@ class HeroesCommand extends commando.Command {
 					});
 				}
 			});
-			message.message.channel.bulkDelete(1);
+			message.message.delete();
 		}
 	}
 }	
