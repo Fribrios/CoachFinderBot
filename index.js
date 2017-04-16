@@ -10,4 +10,4 @@ bot.registry
   .registerDefaults()
   .registerCommandsIn(__dirname + '/commands');
 
-bot.login('MzAyMTkzMzcwOTE3NTAyOTc4.C9GdVw.MhyOF8iNkQszdbVDxK1CJ3gT7rA');
+bot.login('MzAyMTkzMzcwOTE3NTAyOTc4.C9Qz1Q.UAYWe-e2oFEbjOO1l0ZT3sx0D_4');

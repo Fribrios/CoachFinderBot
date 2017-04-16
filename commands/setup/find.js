@@ -12,15 +12,15 @@ class FindCommand extends commando.Command {
 	}
 
 	async run(message, args) {
-		if (message.message.channel.name != 'help-request'){
+		if (message.message.channel.name != 'requests-coaching'){
 			message.reply("This command can only be used in the \"help-request\" channel. Deleting these messages in 5 seconds...").catch(console.error);
 			setTimeout(function() {
 				message.message.channel.bulkDelete(2);
 			}, 5000);
 			return;
 		} else {
-			message.member.sendMessage("Here are the list of coaches teaching your heroes:").catch(console.error);
-			let listOfUsers = (message.member.roles.exists('name', 'Student') ? message.guild.roles.find("name", "Coach").members : message.guild.roles.find("name", "Student").members);
+			// message.member.sendMessage("Here are the list of coaches teaching your heroes:").catch(console.error);
+			let listOfUsers = (message.member.roles.exists('name', 'Students') ? message.guild.roles.find("name", "Coaches").members : message.guild.roles.find("name", "Students").members);
 			listOfUsers.forEach(function (c){ //Iterates through the list of all the users with the opposite Role (All coaches if used by a student)
 				let heroList = []; // Array that holds the list of matching heroes
 				c.roles.forEach(function(h){  //Loops trough each coaches' individual role
@@ -35,7 +35,7 @@ class FindCommand extends commando.Command {
 					}
 				});
 				if (heroList.length != 0){
-					if ( message.member.roles.exists('name', 'Student') ){
+					if ( message.member.roles.exists('name', 'Students') ){
 						message.member.sendMessage(c.user + " can teach you: " + heroList).catch(console.error);
 						c.sendMessage("Hello, " + c.displayName + "! It looks like " + message.member.user +
 							" is currently looking for coaching with: " + heroList + "!\n Why don't you shoot them a message?").catch(console.error);
@@ -57,7 +57,7 @@ class FindCommand extends commando.Command {
 	}
 
 	hasPermission(message){	// if user is not in the Student role
-		return message.member.roles.exists('name', 'Coach') || message.member.roles.exists('name', 'Student');
+		return message.member.roles.exists('name', 'Coaches') || message.member.roles.exists('name', 'Students');
 	}
 }
 
