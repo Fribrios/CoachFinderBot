@@ -57,6 +57,7 @@ class FindCommand extends commando.Command {
 	}
 
 	hasPermission(message){	// if user is not in the Student role
+		message.message.delete();
 		return message.member.roles.exists('name', 'Coaches') || message.member.roles.exists('name', 'Students');
 	}
 }

@@ -1,6 +1,6 @@
 {
   "name": "coachfinder",
-  "version": "1.0.0",
+  "version": "1.0.6",
   "description": "Discord bot that allows for students and coaches to easily coordinate sessions",
   "main": "index.js",
   "scripts": {

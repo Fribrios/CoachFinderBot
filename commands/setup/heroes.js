@@ -13,8 +13,8 @@ class HeroesCommand extends commando.Command {
 	}
 
 	async run(message, args){
-		if (message.message.channel.name != 'requests-coaching'){
-			message.reply("This command can only be used in the \"help-request\" channel. Deleting these messages in 5 seconds...").catch(console.error);
+		if (message.message.channel.name != 'request-coaching'){
+			message.reply("This command can only be used in the \"request-coaching\" channel. Deleting these messages in 5 seconds...").catch(console.error);
 			setTimeout(function() {
 				message.message.channel.bulkDelete(2);
 			}, 5000);
