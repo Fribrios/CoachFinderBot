@@ -13,7 +13,8 @@ class HeroesCommand extends commando.Command {
 	}
 
 	async run(message, args){
-		if (message.message.channel.name != 'request-coaching'){
+		// console.log(message.guild.channels.find("id", "301920267347689483").name);s
+		if (message.message.channel.id != '301920267347689483'){
 			message.reply("This command can only be used in the \"request-coaching\" channel. Deleting these messages in 5 seconds...").catch(console.error);
 			setTimeout(function() {
 				message.message.channel.bulkDelete(2);
@@ -24,7 +25,7 @@ class HeroesCommand extends commando.Command {
 				if (r.name.startsWith('~')){
 					args.forEach(function(e){
 						if (('~' + e.toLowerCase()) == r.name.toLowerCase()){
-							message.member.addRole(r);
+							message.member.addRole(r).catch(console.error);
 						}
 					});
 				}
