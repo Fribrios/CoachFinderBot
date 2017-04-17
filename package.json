@@ -1,12 +1,12 @@
 {
   "name": "coachfinder",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Discord bot that allows for students and coaches to easily coordinate sessions",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "John \"StitcheryDoo\" Lynch",
+  "author": ["StitcherDoo", "Alpaca"],
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.0.0",

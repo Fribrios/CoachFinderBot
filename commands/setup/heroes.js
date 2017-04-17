@@ -30,7 +30,7 @@ class HeroesCommand extends commando.Command {
 					});
 				}
 			});
-			message.message.delete();
+			message.message.delete().catch(console.error);
 		}
 	}
 }	
