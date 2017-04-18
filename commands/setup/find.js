@@ -16,7 +16,7 @@ class FindCommand extends commando.Command {
 		if (message.message.channel.name != 'request-coaching'){
 			message.reply("This command can only be used in the \"request-coaching\" channel. Deleting these messages in 5 seconds...").catch(console.error);
 			setTimeout(function() {
-				message.message.channel.bulkDelete(2);
+				message.message.channel.bulkDelete(2).catch(console.error);
 			}, 5000);
 			return;
 		} else {
@@ -39,14 +39,16 @@ class FindCommand extends commando.Command {
 					if ( message.member.roles.exists('name', 'Students') ){
 						message.member.sendMessage(c.user + " can teach you: " + heroList).catch(console.error);
 						c.sendMessage("Hello, " + c.displayName + "! It looks like " + message.member.user +
-							" is currently looking for coaching with: " + heroList + "!\n Why don't you shoot them a message?").catch(console.error);
+							" is currently looking for coaching with: " + heroList +
+							"!\n Why don't you shoot them a message?").catch(console.error);
 						// console.log(c.user + " can teach you: " + heroList);
 						// console.log("Hello, " + c.displayName + "! It looks like " + message.member.user +
 						// 	" is currently looking for coaching with: " + heroList + "!\n Why don't you shoot them a message?");
 					} else {
 						message.member.sendMessage(c.user + " is looking to be taught: " + heroList).catch(console.error);
 						c.sendMessage("Hello, " + c.displayName + "! It looks like " + message.member.user +
-							" is currently looking for students to teach the following heroes: " + heroList + "!\n Why don't you shoot them a message?").catch(console.error);
+							" is currently looking for students to teach the following heroes: " + heroList +
+							"!\n Why don't you shoot them a message?").catch(console.error);
 						// console.log(c.user + " is looking to be taught: " + heroList);
 						// console.log("Hello, " + c.displayName + "! It looks like " + message.member.user +
 						// 	" is currently looking for students to teach the following heroes: " + heroList + "!\n Why don't you shoot them a message?");
@@ -54,11 +56,11 @@ class FindCommand extends commando.Command {
 				}
 			});
 		}
-		message.message.delete();
+		message.message.delete().catch(console.error);
 	}
 
 	hasPermission(message){	// if user is not in the Student role
-		message.message.delete();
+		message.message.delete().catch(console.error);
 		return message.member.roles.exists('name', 'Coaches') || message.member.roles.exists('name', 'Students');
 	}
 }

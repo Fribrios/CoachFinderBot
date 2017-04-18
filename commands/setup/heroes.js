@@ -17,7 +17,7 @@ class HeroesCommand extends commando.Command {
 		if (message.message.channel.id != '301920267347689483'){
 			message.reply("This command can only be used in the \"request-coaching\" channel. Deleting these messages in 5 seconds...").catch(console.error);
 			setTimeout(function() {
-				message.message.channel.bulkDelete(2);
+				message.message.channel.bulkDelete(2).catch(console.error);
 			}, 5000);
 			return;
 		} else {
