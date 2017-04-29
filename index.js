@@ -5,7 +5,8 @@ bot.registry
   .registerGroups(
 [	['setup', 'Commands for finding a coach/student'],
 	['students', 'Commands for students'],
-	['coaches' , 'Commands for coaches']
+	['coaches' , 'Commands for coaches'],
+	['admin', 'Commands for admins']
 	])
   .registerDefaults()
   .registerCommandsIn(__dirname + '/commands');
@@ -19,9 +20,10 @@ bot.on('message', message => {
 		if ( !message.content.startsWith('!') && !message.author.bot){
 			message.reply('You did not type a command, please only use commands in this text chat. (Deleting messages in 3 seconds...)').catch(console.error);
 			setTimeout(function() {
+				console.log('Deleting non-command messages');
 				message.channel.bulkDelete(2);
 			}, 3000);
 		}
 	}
 })
-bot.login('MzAyMTkzMzcwOTE3NTAyOTc4.C9V8VA.M0OzmtsQlgbrm0NWk_wlHG5O8j8');
+bot.login('MzAyMTkzMzcwOTE3NTAyOTc4.C-WXcQ.ktXUZ_hoE-kxRZ1_unFuNjpbs64');
